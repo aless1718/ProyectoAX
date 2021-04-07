@@ -1,0 +1,126 @@
+#btn-pass {
+  background-color: white;
+  border: white;
+  border-radius: 7px;
+  border: 0px;
+  box-shadow: 0px 1px .5px #24c64f;
+}
+
+.container {
+  align-content: center;
+  margin-top: 1%;
+ 
+}
+
+#btn-pass:hover {
+  background: -webkit-linear-gradient(right, #a6f77b, #2dbd6e);
+  border: none;
+  border-radius: 21px;
+  box-shadow: 0px 1px 8px #24c64f;
+}
+
+#btn-photo {
+  background-color: white;
+  border: 0px;
+  box-shadow: 0px 1px .5px #24c64f;
+  border-radius: 7px;
+  font-size: 16px;
+}
+
+#btn-photo:hover {
+  color: green;
+}
+
+/* Redimensión de imágenes */
+img {
+  object-fit: cover;
+  height: 200px;
+  width: 200px;
+  background-color: #bbb;
+  border-radius: 100px;
+  display: inline-block;
+  border: 1px solid  rgb(57, 243, 57);
+}
+
+
+
+#submit-btn {
+  background: -webkit-linear-gradient(right, #a6f77b, #2dbd6e);
+  border: none;
+  border-radius: 21px;
+  box-shadow: 0px 1px 8px #24c64f;
+  cursor: pointer;
+  color: white;
+  font-family: "Raleway SemiBold", sans-serif;
+  height: 42.3px;
+  margin: 0 auto;
+  margin-top: 20px;
+  transition: 0.25s;
+  width: 153px;
+  margin-bottom: -10px;
+}
+
+#submit-btn:hover {
+  box-shadow: 0px 1px 18px #24c64f;
+}
+
+#submit-btn:focus {
+  outline: none;
+}
+
+.form {
+  align-items: left;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-border {
+  background: -webkit-linear-gradient(right, #a6f77b, #2ec06f);
+  height: 1px;
+  width: 100%;
+}
+.form-border2 {
+  background: -webkit-linear-gradient(right, #a6f77b, #2ec06f);
+  height: 1px;
+  width: 85%;
+}
+
+.form-content {
+  background: none;
+  border: none;
+  outline: none;
+  padding-top: 14px;
+}
+
+.underline-title {
+  background: -webkit-linear-gradient(right, #a6f77b, #2ec06f);
+  height: 2px;
+  margin: 1.1rem auto 0 auto;
+  width: 60%
+}
+.underline-title2 {
+  background: -webkit-linear-gradient(right, #a6f77b94, #61f5a475);
+  height: 2px;
+  margin: 1.1rem auto 0 auto;
+
+}
+
+#card-title-singin {
+  font-family: "Raleway Thin", sans-serif;
+  letter-spacing: 4px;
+  padding-bottom: 12px;
+  padding-top: 13px;
+  text-align: center;
+}
+
+.centered
+{
+  margin: auto;
+  text-align: left !important;
+  width: 30%;
+  padding-bottom: 15px;
+}
+
+input {
+  width: 100%;
+}

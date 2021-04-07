@@ -1,0 +1,73 @@
+<navbar></navbar>
+<div style="padding-top: 120px; padding-left: 25%; padding-right: 25%;">
+  <fieldset
+    style="align-content: center; border: 0px solid; border-color: lightgrey; border-radius: 30px; padding-bottom: 5%;">
+    
+    <h1 style="text-align: center; padding-top: 5%; font-family: Raleway Thin, sans-serif;
+    letter-spacing: 4px;" >INFORMACIÓN BANCARIA</h1>
+    <div class="underline-title"></div>    
+
+    <div class="container">
+      <div class="input-group justify-content-center">
+
+        <div class="row justify-content-center" style="padding-top: 30px;">
+
+          <div class="col text-center">
+            <div class="col text-left">
+              <strong>Titular de la tarjeta</strong><br>
+              <input type="text" class="form-content" placeholder="Introduce el titular de la tarjeta" required>
+              <div class="form-border"></div>
+            </div>
+          </div>
+
+          <div class="col text-center">
+            <div class="col text-left">
+              <strong>Número de tarjeta</strong><br>
+              <input type="text" class="form-content" placeholder="Introduce tu número de tarjeta" required>
+              <div class="form-border"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="input-group justify-content-center">
+
+        <div class="row justify-content-center" style="padding-top: 30px;">
+
+          <div class="col text-center">
+            <div class="col text-left">
+              <strong>CVV</strong><br>
+              <input type="text" class="form-content" placeholder="Introduce tu número CVV" required>
+              <div class="form-border"></div>
+            </div>
+          </div>
+
+          <div class="col text-center">
+            <div class="col text-left">
+              <strong>Fecha de caducidad</strong><br>
+              <input type="date" style="width: 150px;" class="form-content" placeholder="Introduce el nombre de tu calle" required>
+              <div class="form-border"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="row justify-content-center pt-5">
+      <a (click)="this.test()" class="mr-sm-3">
+        <button id="back-btn" type="submit"><strong>Volver</strong></button>
+      </a>
+
+      <a href="/registro-pago">
+        <button id="submit-btn" type="submit"><strong>Registrarse </strong></button>
+      </a>
+    </div>
+
+    <div class="row justify-content-center pt-5">
+      <span style=" color:grey;">No es necesario rellenar esta parte del registro ahora, <br> pero adelantará los
+        futuros procesos de compra. </span></div>
+
+  </fieldset>
+</div>
+
+<app-footer></app-footer>

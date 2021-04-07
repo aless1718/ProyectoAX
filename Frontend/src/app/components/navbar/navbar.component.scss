@@ -1,0 +1,177 @@
+.modal-content {
+  position: absolute;
+  align-content: flex-end;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 300px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+  border-radius: 20px;
+}
+
+.carrito {
+    position: absolute;
+    z-index: 100;
+    left: 22em;
+    padding-top: 4%;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+
+  text-align: center;
+  font-family: arial;
+}
+
+.price {
+  color: grey;
+  font-size: 22px;
+}
+
+.card #btn-pagar {
+  border: none;
+  border-radius: 50px;
+  outline: 0;
+  padding: 5px;
+  color: black;
+  background-color: rgb(110, 245, 110);
+  text-align: center;
+  cursor: pointer;
+  width: 75%;
+  size: 20%;
+  font-size: 13px;
+}
+
+.card button:hover {
+  opacity: 0.7;
+}
+
+
+
+.modal-content {
+  height: 300px;
+  width: 329px;
+  padding: -10px -4px;
+  padding-top: -50px;
+  margin: 17%;
+}
+
+label {
+  font-family: "Raleway", sans-serif;
+  font-size: 11pt;
+}
+#forgot-pass {
+  color: #2dbd6e;
+  font-family: "Raleway", sans-serif;
+  font-size: 10pt;
+  margin-top: 3px;
+  text-align: right;
+}
+#card-singin {
+  background: #fbfbfb;
+  border-radius: 8px;
+  box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.65);
+  height: 410px;
+  width: 329px;
+}
+#card-content-singin {
+  padding: 12px 44px;
+}
+#card-title-singin {
+  font-family: "Raleway Thin", sans-serif;
+  letter-spacing: 4px;
+  padding-bottom: 23px;
+  padding-top: 13px;
+  text-align: center;
+}
+#signup {
+  color: #2dbd6e;
+  font-family: "Raleway", sans-serif;
+  font-size: 10pt;
+  margin-top: 16px;
+  text-align: center;
+}
+#submit-btn {
+  background: -webkit-linear-gradient(right, #a6f77b, #2dbd6e);
+  border: none;
+  border-radius: 21px;
+  box-shadow: 0px 1px 8px #24c64f;
+  cursor: pointer;
+  color: white;
+  font-family: "Raleway SemiBold", sans-serif;
+  height: 42.3px;
+  margin: 0 auto;
+  margin-top: 20px;
+  transition: 0.25s;
+  width: 153px;
+  margin-bottom: -10px;
+}
+#submit-btn:hover {
+  box-shadow: 0px 1px 18px #24c64f;
+}
+
+#submit-btn:focus {
+ outline: none;  
+}
+
+.form {
+  align-items: left;
+  display: flex;
+  flex-direction: column;
+}
+.form-border {
+  background: -webkit-linear-gradient(right, #a6f77b, #2ec06f);
+  height: 1px;
+  width: 100%;
+}
+.form-content {
+  background: #fbfbfb;
+  border: none;
+  outline: none;
+  padding-top: 14px;
+}
+.underline-title {
+  background: -webkit-linear-gradient(right, #a6f77b, #2ec06f);
+  height: 2px;
+  margin: 1.1rem auto 0 auto;
+  width: 178px;
+}
+
+
+
+
+
+
+html {
+    box-sizing: border-box;
+  }
+  
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+  
+  body {
+    margin: 64px auto;
+    text-align: center;
+    font-size: 100%;
+    max-width: 640px;
+    width: 94%;
+  }
+  
+  a:hover {
+    text-decoration: none;
+  }
+  
+  header,
+  .demo,
+  .demo p {
+    margin: 4em 0;
+    text-align: center;
+  }
+  

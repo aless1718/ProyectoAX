@@ -1,0 +1,119 @@
+<navbar></navbar>
+<div style="padding-top: 120px; padding-left: 25%; padding-right: 25%;">
+  <fieldset
+    style="align-content: center; border: 0px solid; border-color: lightgrey; border-radius: 30px; ">
+   
+    <h1 style="text-align: center; padding-top: 5%; font-family: Raleway Thin, sans-serif;
+    letter-spacing: 4px;" >INFORMACIÓN PERSONAL</h1>
+    <div class="underline-title"></div>
+
+    <div class="container">
+      <div class="input-group justify-content-center">
+        <div class="row justify-content-center" style="padding-top: 30px;">
+          <div class="col text-center">
+            <div class="row ">
+            <div class="col text-left">
+              <strong>Nombre</strong><br>
+              <input type="text" #inputName class="form-content" placeholder="Introduce tu nombre" required>
+              <div class="form-border"></div>
+            </div>
+          </div>
+          </div>
+          <div class="col text-center">
+            <div class="row">
+            <div class="col text-left">
+              <strong>Primer apellido</strong><br>
+              <input type="text" #inputLastname class="form-content" placeholder="Introduce tu primer apellido" required>
+              <div class="form-border"></div>
+            </div>
+          </div>
+          </div>
+          <div class="col text-center">
+            <div class="row">
+            <div class="col text-left">
+              <strong>Segundo apellido</strong><br>
+              <input type="text" #inputSurname class="form-content" placeholder="Introduce tu segundo apellido">
+              <div class="form-border"></div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+
+        <div class="input-group justify-content-center">
+        <div class="row justify-content-center" style="padding-top: 30px; padding-left: 7%; padding-right: 7%;">
+          <div class="col text-center">
+            <div class="col text-left">
+              <strong>Email</strong><br>
+              <input type="email" #inputEmail class="form-content" aria-describedby="emailHelp" placeholder="Introduce tu email"
+                required>
+                <div class="form-border"></div>
+
+            </div>
+          </div>
+          <div class="col text-center">
+            <div class="col text-left">
+              <strong>Número de teléfono</strong><br>
+              <input type="text" #inputPhone class="form-content" placeholder="Será necesario para envíos">
+              <div class="form-border"></div>
+            </div>
+          </div>
+        </div>
+
+          <div class="row justify-content-center" style="padding-top: 30px; padding-left: 7%; padding-right: 7%;">
+            <div class="col text-center">
+              <div class="col text-left">
+                <strong>Contraseña</strong><br>
+                <input type="password" #inputPassword id="myInput" class="form-content" placeholder="Introduce tu contraseña" required>
+                <div class="form-border"></div>
+              </div>
+            </div>
+
+            <div class="col text-center">
+              <div class="col text-left">
+                <strong>Confirmar contraseña</strong><br>
+                <input type="password" #inputConfirmpassword class="form-content" placeholder="Confirma tu contraseña" required>
+                <div class="form-border"></div>
+                <div class="justify-content-left pt-2"><input type="checkbox" onclick="clickBtn()" name="ver"> Mostrar
+                  contraseña
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="row justify-content-center" style="padding-top: 30px;  padding-left: 7%; padding-right: 7%;">
+            <div class="col text-center">
+              <div class="col text-left">
+                <strong>Fecha de nacimiento</strong><br>
+                <input type="date" #inputBirthday id="birthday" class="form-content" name="birthday">
+                <div class="form-border"></div>
+              </div>
+            </div>
+            <div class="col text-center">
+              <div class="col text-center">
+                <strong>Altura</strong><br>
+                <input type="text" #inputHeight class="form-content" placeholder="Introduce tu altura en centímetros" required>
+                <div class="form-border"></div>
+              </div>
+            </div>
+            <div class="col text-center">
+              <div class="col text-center">
+                <strong>Peso</strong><br>
+                <input type="text" #inputWeight class="form-content" placeholder="Introduce tu peso en kilogramos">
+                <div class="form-border"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row justify-content-center pt-5"><a (click)="this.datos()"  id="submit-btn"><p style="margin-top: 3%;"><strong>
+              Siguiente </strong></p></a></div>
+
+      </div>
+    </div>
+  </fieldset>
+</div>
+<div>
+  <app-footer></app-footer>
+</div>

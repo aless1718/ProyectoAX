@@ -1,0 +1,162 @@
+<navbar></navbar>
+<div style="padding-top: 120px;  padding-left: 25%; padding-right: 25%;">
+  <fieldset
+    style="align-content: center; border: 0px solid; border-color: lightgrey; border-radius: 30px;">
+    
+
+    <h1 style="text-align: center; padding-top: 5%; font-family: Raleway Thin, sans-serif;
+    letter-spacing: 4px;" >DATOS DE ENVÍO</h1>
+    <div class="underline-title"></div>
+   
+    <div class="container">
+
+      <div class="input-group justify-content-center">
+        <div class="row justify-content-center" style="padding-top: 30px;">
+  
+          <div class="col text-center">
+            <div class="col text-left">
+              <strong>País</strong><br>
+              <input type="text" class="form-content" placeholder="España" disabled>
+              <div class="form-border"></div>
+            </div>
+          </div>
+          <div class="col text-center">
+            <div class="col text-left">
+              <strong>Localidad</strong><br>
+              <select name="localidad" class="form-content" #inputLocalidad style="width: 160px; padding-top: 0.5px;" required>
+                <option data-postal="0"></option>
+                <option data-postal="01" value="Alava/Araba">Alava/Araba</option>
+                <option data-postal="02" value="Albacete">Albacete</option>
+                <option data-postal="03" value="Alicante">Alicante</option>
+                <option data-postal="04" value="Almeria">Almería</option>
+                <option data-postal="05" value="Avila">Avila</option>
+                <option data-postal="06" value="Badajoz">Badajoz</option>
+                <option data-postal="07" value="Islas Baleares">Islas Baleares</option>
+                <option data-postal="08" value="Barcelona">Barcelona</option>
+                <option data-postal="09" value="Burgos">Burgos</option>
+                <option data-postal="10" value="Caceres">Cáceres</option>
+                <option data-postal="11" value="Cadiz">Cádiz</option>
+                <option data-postal="12" value="Castellon">Castellón</option>
+                <option data-postal="13" value="Ciudad Real">Ciudad Real</option>
+                <option data-postal="14" value="Cordoba">Córdoba</option>
+                <option data-postal="15" value="A Coruna/La Coruna">A Coruña/La Coruña</option>
+                <option data-postal="16" value="Cuenca">Cuenca</option>
+                <option data-postal="17" value="Gerona/Girona">Gerona/Girona</option>
+                <option data-postal="18" value="Granada">Granada</option>
+                <option data-postal="19" value="Guadalajara">Guadalajara</option>
+                <option data-postal="20" value="Gipuzkoa/Guipuzcoa">Gipuzkoa/Guipuzcoa</option>
+                <option data-postal="21" value="Huelva">Huelva</option>
+                <option data-postal="22" value="Huesca">Huesca</option>
+                <option data-postal="23" value="Jaen">Jaen</option>
+                <option data-postal="24" value="Leon">León</option>
+                <option data-postal="25" value="Lerida/Lleida">Lérida/Lleida</option>
+                <option data-postal="26" value="La Rioja">La Rioja</option>
+                <option data-postal="27" value="Lugo">Lugo</option>
+                <option data-postal="28" value="Madrid">Madrid</option>
+                <option data-postal="29" value="Malaga">Málaga</option>
+                <option data-postal="30" value="Murcia">Murcia</option>
+                <option data-postal="31" value="Navarra">Navarra</option>
+                <option data-postal="32" value="Orense/Ourense">Orense/Ourense</option>
+                <option data-postal="33" value="Asturias">Asturias</option>
+                <option data-postal="34" value="Palencia">Palencia</option>
+                <option data-postal="35" value="Las Palmas">Las Palmas</option>
+                <option data-postal="36" value="Pontevedra">Pontevedra</option>
+                <option data-postal="37" value="Salamanca">Salamanca</option>
+                <option data-postal="38" value="S.C.Tenerife">S.C.Tenerife</option>
+                <option data-postal="39" value="Cantabria">Cantabria</option>
+                <option data-postal="40" value="Segovia">Segovia</option>
+                <option data-postal="41" value="Sevilla">Sevilla</option>
+                <option data-postal="42" value="Soria">Soria</option>
+                <option data-postal="43" value="Tarragona">Tarragona</option>
+                <option data-postal="44" value="Teruel">Teruel</option>
+                <option data-postal="45" value="Toledo">Toledo</option>
+                <option data-postal="46" value="Valencia" a>Valencia</option>
+                <option data-postal="47" value="Valladolid">Valladolid</option>
+                <option data-postal="48" value="Bizkaia/Vizcaya">Bizkaia/Vizcaya</option>
+                <option data-postal="49" value="Zamora">Zamora</option>
+                <option data-postal="50" value="Zaragoza">Zaragoza</option>
+                <option data-postal="51" value="Ceuta">Ceuta</option>
+                <option data-postal="52" value="Melilla">Melilla</option>
+              </select>         
+              <div class="form-border"></div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="input-group justify-content-center">
+
+        <div class="row justify-content-center" style="padding-top: 30px;">
+
+          <div class="col text-center">
+            <div class="col text-left">
+              <strong>Código Postal</strong><br>
+              <input type="text" #inputCodigoPostal class="form-content" placeholder="Introduce tu código postal" required>
+              <div class="form-border"></div>
+            </div>
+          </div>
+
+          <div class="col text-center">
+            <div class="col text-left">
+              <strong>Calle</strong><br>
+              <input type="text" #inputCalle class="form-content" placeholder="Introduce el nombre de tu calle" required>
+              <div class="form-border"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="input-group justify-content-center">
+
+        <div class="row justify-content-center" style="padding-top: 30px;">
+
+          <div class="col text-center">
+            <div class="col text-left">
+              <strong>Portal</strong><br>
+              <input id="inputs-sizes" #inputPortal type="number" class="form-content" placeholder="Ej: 45" required>
+              <div class="form-border"></div>
+            </div>
+          </div>
+
+          <div class="col text-center">
+            <div class="col text-left">
+              <strong>Escalera</strong><br>
+              <input id="inputs-sizes" #inputEscalera type="number" class="form-content" placeholder="Ej: 2" required>
+              <div class="form-border"></div>
+            </div>
+          </div>
+
+          <div class="col text-center">
+            <div class="col text-left">
+              <strong>Puerta</strong><br>
+              <input id="inputs-sizes" #inputPuerta type="number" class="form-content" placeholder="Ej: 5" required>
+              <div class="form-border"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+   
+  </div>
+    <div class="row justify-content-center pt-5">
+      <a (click)="this.test()" class="mr-sm-3">
+        <button type="submit" id="back-btn"><strong>Volver</strong></button>
+      </a>
+      <a class="mr-sm-3">
+        <button class="btn btn-outline" (click)="this.datosEnvio()" id="btn-saltar" type="submit" style="margin-top: 20%;"><strong>Saltar paso</strong></button>
+      </a>
+      <a>
+        <button (click)="this.datosEnvio()" type="submit" id="submit-btn" ><p style="margin-bottom: 3%;"><strong>
+          Siguiente </strong></p></button>
+      </a>
+    </div>
+    <div class="row justify-content-center pt-5" >
+      <span style=" color:grey;">No es necesario rellenar esta parte del registro ahora, <br> pero adelantará los futuros procesos de compra. </span></div>
+  
+
+  </fieldset>
+</div>
+
+<app-footer></app-footer>

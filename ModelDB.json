@@ -1,0 +1,37 @@
+User {
+    "name": "string",
+    "password": "string",
+    "lastname": "string",
+    "weight": "number",
+    "height": "number",
+    "age": "number",
+    "email": "string",
+    "phone": "number",
+    "direction": "string",
+    "tarjet_number": "number",
+    "tarjet_cvv": "number",
+    "tarjet_dataexp": "date",
+    "photo": "string"
+  }
+
+
+Orders {
+     "user_id": "string",
+     "product_number": ["number"],
+     "date_order": "date" 
+  }
+  
+Registers {
+    "date": "date",
+    "weight": "number",
+    "training_times_week": "number"
+  }
+
+Products {
+    "product_number": "number",
+    "date_exp": "date",
+    "product_name": "string",
+    "price": "number",
+    "sizes": ["string"],
+    "photo": "string"
+}

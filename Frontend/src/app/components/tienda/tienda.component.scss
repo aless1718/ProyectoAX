@@ -1,0 +1,109 @@
+#card-title-singin {
+  font-family: "Raleway Thin", sans-serif;
+  letter-spacing: 4px;
+  text-align: center;
+  font-size: 1em;
+}
+
+.centered {
+  margin: auto;
+  text-align: left !important;
+  width: 70%;
+}
+
+.underline-title {
+  background: -webkit-linear-gradient(right, #a6f77b, #2ec06f);
+  height: 2px;
+  margin: 1.1rem auto 0 auto;
+  width: 100%;
+}
+
+#dropdownMenuBtn{
+  font-size: 1.3em;
+  font-family: "Raleway Thin", sans-serif;
+  letter-spacing: 4px;
+  margin-bottom: 2.5vh;
+  border-left: 1px solid lightgreen;
+  border-right: 1px solid lightgreen;
+  border-radius: 10px;
+}
+
+@media(max-width: 1024px) {
+
+  #dropdownMenuBtn{
+    font-size: .8em;
+    font-family: "Raleway Thin", sans-serif;
+    letter-spacing: .5px;
+    border-left: 1px solid lightgreen;
+    border-right: 1px solid lightgreen;
+    border-radius: 10px;
+    margin-right: 2.5vh;
+    margin-bottom: 1vh;
+  }
+}
+
+@media(max-width: 1024px) {
+  .centered {
+    margin: auto;
+    text-align: left !important;
+    width: 100%;
+    font-size: .78em;
+  }
+}
+
+.group-container {
+  float: left;
+  width: 14vw;
+  height: 400px;
+  top: 0;
+  margin-top: 21.5vh;
+  margin-left: 4.2vh;
+  margin-right: 5vw;
+  box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  position: fixed;
+  padding: 2vh;
+
+}
+
+.dropdown-menu {
+  border: none;
+}
+
+@media(max-width: 1024px) {
+  .group-container {
+    float: left;
+    width: 110px;
+    height: 42vh;
+    top: 0;
+    margin-top: 27.5vh;
+    margin-left: 1vh;
+    box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
+    position: fixed;
+  
+  }
+}
+
+
+  
+  .price {
+    color: grey;
+    font-size: 22px;
+  }
+  
+  .card button {
+    border: none;
+    border-radius: 50px;
+    outline: 0;
+    padding: 12px;
+    color: black;
+    background-color: rgb(110, 245, 110);
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+  
+  .card button:hover {
+    opacity: 0.7;
+  }
