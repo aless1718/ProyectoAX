@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { UsersService } from 'src/app/services/users.service';
+import { RegisterUserService } from 'src/app/services/registerUser.service';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -12,7 +12,6 @@ export class RegistroComponent implements OnInit {
 
   @ViewChild("inputName") inputName: any;
   @ViewChild("inputLastname") inputLastname: any;
-  @ViewChild("inputSurname") inputSurname: any;
   @ViewChild("inputEmail") inputEmail: any;
   @ViewChild("inputPhone") inputPhone: any;
   @ViewChild("inputPassword") inputPassword: any;
@@ -22,7 +21,7 @@ export class RegistroComponent implements OnInit {
   @ViewChild("inputWeight") inputWeight: any;
 
 
-  constructor(private usersService: UsersService, private router: Router) { }
+  constructor(private RegistroUserService: RegisterUserService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -30,17 +29,16 @@ export class RegistroComponent implements OnInit {
 
   datos(): void {
     
-    this.usersService.user.age = this.inputBirthday.nativeElement.value;
-    this.usersService.user.lastname = this.inputLastname.nativeElement.value;
-    this.usersService.user.password = this.inputPassword.nativeElement.value;
-    this.usersService.user.surname = this.inputSurname.nativeElement.value;
-    this.usersService.user.weight = this.inputWeight.nativeElement.value;
-    this.usersService.user.height = this.inputHeight.nativeElement.value;
-    this.usersService.user.name = this.inputName.nativeElement.value;
-    this.usersService.user.email = this.inputEmail.nativeElement.value;
-    this.usersService.user.phone = this.inputPhone.nativeElement.value;
+    this.RegistroUserService.user.age = this.inputBirthday.nativeElement.value;
+    this.RegistroUserService.user.lastname = this.inputLastname.nativeElement.value;
+    this.RegistroUserService.user.password = this.inputPassword.nativeElement.value;
+    this.RegistroUserService.user.weight = this.inputWeight.nativeElement.value;
+    this.RegistroUserService.user.height = this.inputHeight.nativeElement.value;
+    this.RegistroUserService.user.name = this.inputName.nativeElement.value;
+    this.RegistroUserService.user.email = this.inputEmail.nativeElement.value;
+    this.RegistroUserService.user.phone = this.inputPhone.nativeElement.value;
 
-    console.log(this.usersService.user);
+    console.log(this.RegistroUserService.user);
     this.router.navigate(['registro-envio']);
 
   }

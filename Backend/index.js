@@ -1,8 +1,14 @@
 require('./Models/User');
-const mongoose = require('mongoose');
-const jwt = require('jsonwebtoken');
-const User = mongoose.model('User');
+require('./Models/Register');
 
+const mongoose = require('mongoose');
+
+const User = mongoose.model('User');
+const Register = mongoose.model('Register');
+
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+const salt = 10;
 
 const privateToken = "AntonioElErizo";
 
@@ -21,6 +27,30 @@ const app = express();
 app.use(bodyParser.json());
 /*Le decimos al servidor que habilite cualquier conex*/
 app.use(cors());
+
+
+
+
+/* Middleware */
+const authenticateJWT = (req, res, next) => {
+    const authHeader = req.headers.authorization;
+
+    if (authHeader) {
+        const token = authHeader.split(' ')[1];
+
+        jwt.verify(token, privateToken, (err, user) => {
+            if (err) {
+                return res.sendStatus(403);
+            }
+
+            req.user = user;
+            next();
+        });
+    } else {
+        res.sendStatus(401);
+    }
+};
+
 
 /* Las variables que me devuelve el callback serán la petición del cliente (req) y la respuesta del servidor (res) */
 router.get('/users', (req, res) => {
@@ -42,30 +72,47 @@ router.get('/users/:user_id', (req, res) => {
         if (err) {
             console.log(err);
         } else {
-            res.send(doc[0].lastname);
+            res.send(doc[0]);
         }
     })
 });
 
+
+
+
+
+/* CREAR USER (REGISTER) */
 router.post('/users', (req, res) => {
-    User.create(req.body).then((doc) => {
-        res.send(doc);
+    console.log(req.body);
+    bcrypt.hash(req.body.password, salt, function (err, encrypted) {
+        req.body.password = encrypted;
+        console.log(req.body);
+        User.create(req.body).then((doc) => {
+            res.send(doc);
+        })
     })
-})
 
-router.put('/users', (req, res) => {
-    User.findOneAndUpdate({
-        _id: req.body._id
-    }, req.body, {
-        new: true,
-        useFindAndModify: false
-    }).then((doc) => {
-        res.send(doc);
-    })
 })
 
 
-/* */
+/* ACTUALIZAR USER */
+router.put('/users', authenticateJWT, (req, res) => {
+    bcrypt.hash(req.body.password, salt, function (err, encrypted) {
+        req.body.password = encrypted;
+        User.findOneAndUpdate({
+            _id: req.body._id
+        }, req.body, {
+            new: true,
+            useFindAndModify: false
+        }).then((doc) => {
+            res.send(doc);
+        })
+    })
+})
+
+
+
+/* LOGIN */
 router.post('/auth', (req, res) => {
 
     let email = req.body.email;
@@ -73,21 +120,108 @@ router.post('/auth', (req, res) => {
 
 
     User.findOne({
-       email: email,
-       password: password 
-    }, (err, user) => {
-        if(user != null)
-        {
-            //En caso de que el user exista construimos el token con payload y la clave para después devolverlo
+        email: email
 
-            let token = jwt.sign({...user}, privateToken);
-            res.send(JSON.stringify(token));
+    }, (err, user) => {
+        if (user != null) {
+            bcrypt.compare(req.body.password, user.password, (err, same) => {
+                if (same) {
+                    //En caso de que el user exista construimos el token con payload y la clave para después devolverlo
+
+                    let token = jwt.sign({
+                        ...user
+                    }, privateToken);
+                    res.send(JSON.stringify(token));
+                } else {
+                    res.status(401).send({
+                        message: 'Contraseña incorrecta'
+                    });
+                }
+            });
+
+
         } else {
-            res.status(401).send({message: 'Error de autenticación'});
+            res.status(401).send({
+                message: 'El email no está registrado'
+            });
         }
     })
 
 });
+
+
+
+//CREAR REGISTROS DEL SEGUIMEINTO CORPORAL
+
+router.post('/registers', authenticateJWT, (req, res) => {
+
+    Register.create(req.body).then((doc) => {
+        res.send(doc);
+    })
+})
+
+
+/* LEER REGISTROS */
+router.get('/registers/:user_id', authenticateJWT, (req, res) => {
+
+    Register.find({
+        user_id: req.params.user_id
+    }, (err, doc) => {
+        if (err) {
+            res.send(err);
+        } else {
+            res.send(doc);
+        }
+    })
+});
+
+
+/* BORRAR REGISTROS */
+router.delete('/registers/:_id', authenticateJWT, (req, res) => {
+
+    Register.deleteOne({
+        _id: req.params._id
+    }, (err, doc) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(doc);
+        }
+    })
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /*Le decimos a nuestra aplicación express que el objeto router va a formar parte de la aplicación con todos sus endpoints*/
@@ -109,26 +243,3 @@ mongoose.connect('mongodb+srv://AdminCiC:CapiCames6@ax.y45ur.mongodb.net/AXDB?re
 
 /*Corremos el servidor con la configuración previa*/
 app.listen((3000), () => console.log("Servidor corriendo en puerto 3000"));
-
-
-
-
-// /* Middleware */
-// const authenticateJWT = (req, res, next) => {
-//     const authHeader = req.headers.authorization;
-
-//     if (authHeader) {
-//         const token = authHeader.split(' ')[1];
-
-//         jwt.verify(token, privateToken, (err, user) => {
-//             if (err) {
-//                 return res.sendStatus(403);
-//             }
-
-//             req.user = user;
-//             next();
-//         });
-//     } else {
-//         res.sendStatus(401);
-//     }
-// };

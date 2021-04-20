@@ -3,9 +3,14 @@ const Schema = mongoose.Schema;
 const registerSchema = new Schema({
    
     user_id: { type: Schema.ObjectId, ref: 'User' },
-    date: Number,
-    weight: Number,
-    training_times_week: Number
+    fecha: Date,
+    peso: Number,
+    pierna: Number,
+    brazo: Number,
+    cintura: Number,
+    torso: Number,
+    hombros: Number
+
      
 })
 

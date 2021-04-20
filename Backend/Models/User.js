@@ -6,15 +6,22 @@ const userSchema = new Schema({
     password: String,
     lastname: String,
     surname: String,
-    weight: Number,
-    height: Number,
-    age: Number,
+    weight: String,
+    height: String,
+    age: String,
     email: String,
-    phone: Number,
+    phone: String,
     address: String,
-    tarjet_number: Number,
-    tarjet_cvv: Number,
-    tarjet_dataexp: Number  
+    city: String,
+    street: String,
+    portal: String,
+    stair: String,
+    door: String,
+    PostalCode: String,
+    tarjet_name: String,
+    tarjet_number: String,
+    tarjet_cvv: String,
+    tarjet_dataexp: String  
       
 })
 

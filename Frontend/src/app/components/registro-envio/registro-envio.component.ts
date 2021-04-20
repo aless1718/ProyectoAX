@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { UsersService } from 'src/app/services/users.service';
+import { RegisterUserService } from 'src/app/services/registerUser.service';
 
 
 @Component({
@@ -19,7 +19,7 @@ export class RegistroEnvioComponent implements OnInit {
 
 
 
-  constructor(private usersService: UsersService, private router: Router) { }
+  constructor(private RegisterUserService: RegisterUserService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -32,9 +32,17 @@ export class RegistroEnvioComponent implements OnInit {
                 + this.inputCodigoPostal.nativeElement.value + ", " + this.inputLocalidad.nativeElement.value;
 
     
-    this.usersService.user.address = address;
+    this.RegisterUserService.user.address = address;
 
-    this.usersService.createUser();
+    this.RegisterUserService.user.city = this.inputLocalidad.nativeElement.value;
+    this.RegisterUserService.user.street = this.inputCalle.nativeElement.value;
+    this.RegisterUserService.user.portal = this.inputPortal.nativeElement.value;
+    this.RegisterUserService.user.stair = this.inputEscalera.nativeElement.value;
+    this.RegisterUserService.user.door = this.inputPuerta.nativeElement.value;
+    this.RegisterUserService.user.PostalCode = this.inputCodigoPostal.nativeElement.value;
+
+
+    this.RegisterUserService.createUser();
 
     this.router.navigate(['registro-pago']);
 

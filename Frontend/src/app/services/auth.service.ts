@@ -1,12 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { tap } from 'rxjs/operators';
-import { Observable, BehaviorSubject, throwError } from 'rxjs';
-import { JwtResponse } from '../auth/jwt-response';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs';
 import { User } from '../Models/User';
-
 import  jwt_decode  from 'jwt-decode';
-import { r3JitTypeSourceSpan } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +12,7 @@ export class AuthService {
 
 
   public islogged: boolean = false;
-  AUTH_SERVER: string = 'http://192.168.1.141:3000';
+  AUTH_SERVER: string = 'http://localhost:3000';
   authSubject = new BehaviorSubject(false);
   private token: string | null = '';
 
@@ -34,10 +30,10 @@ export class AuthService {
       user).toPromise().then( 
         (res: any) => {
           if (res) {
-            const hola = jwt_decode(res);
-            console.log(hola);
+            const decodeJWT: any = jwt_decode(res);
 
             this.islogged = true;
+            this.saveUser(decodeJWT._doc as User);
             //guardar token
             this.saveToken(res);
             return res;
@@ -47,6 +43,17 @@ export class AuthService {
         })
       
   }
+
+  private saveUser(user: User): void{
+    localStorage.setItem("user", JSON.stringify(user));
+  }
+
+  public getUser(): User{
+    return JSON.parse(localStorage.getItem("user") as string);
+  }
+
+
+
 
   logout(): void {
     this.token = '';
@@ -62,10 +69,37 @@ export class AuthService {
   }
 
   private getToken(): string | null {
-    if (!this.token) {
-      this.token = localStorage.getItem("ACCESS_TOKEN");
-    }
-    return this.token;
+    
+      return localStorage.getItem("ACCESS_TOKEN");
+    
   }
 
+  updateUser(user: any): Promise<any> {
+
+    const header = new HttpHeaders({
+      'Content-Type': `application/json`,
+      'Authorization': `Bearer ${this.getToken()}`
+  });
+
+
+    return this.httpClient.put<any>(`${this.AUTH_SERVER}/users`, user, {headers: header}).toPromise().then( 
+        (res: any) => {
+          if (res) {
+            this.setUser(res);
+            return res;
+          }
+        }).catch((reason: any ) => {
+          throw new Error(reason);
+        }) 
+  }
+
+  setUser(user: User): void{
+    localStorage.setItem('user', JSON.stringify(user));
+  }
 }
+
+
+
+
+
+//crypto-js

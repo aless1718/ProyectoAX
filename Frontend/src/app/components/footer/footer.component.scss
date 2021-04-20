@@ -4,11 +4,12 @@ a {
 }
 
 .footer{
-    margin-top: 1.4vw;
-    position: static;
+
     left: 0;
     bottom: 0;
     width: 100%;
     text-align: center;
-    
+    clear: both;
+    position: static;
+    height: 110px;
 }

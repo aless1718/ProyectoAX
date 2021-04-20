@@ -1,6 +1,32 @@
 .container {
   width: 69vw;
   float: right;
+  margin-top: 20vh;
+}
+
+@media(max-width: 321px){
+  .container {
+    width: 54vw !important;
+    float: right;
+    margin-top: 15vh !important;
+  }
+}
+
+@media(max-width: 381px){
+  .container {
+    width: 67vw;
+    float: right;
+    margin-top: 12vh;
+  }
+
+  .card {
+    border: none;
+    width: 6vh;
+    float: center;
+    margin-left: 2.6vh;
+    text-align: center;
+    font-family: arial;
+  }
 }
 
 .card {
@@ -8,7 +34,6 @@
   width: 21vh;
   text-align: center;
   font-family: arial;
-
 }
 
 span {
@@ -62,9 +87,16 @@ select {
   .col {
     padding: .2vh;
     margin: .2vh;
-    width: 15vh;
+    width: 12vh;
     float: center;
   }
+
+    .container {
+      width: 65vw;
+      float: right;
+      margin-top: 12vh;
+    }
+  
 }
 .price {
   color: grey;

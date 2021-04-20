@@ -4,7 +4,7 @@
       <h1 id="card-title-singin"><strong>INFORMACIÓN PERSONAL</strong></h1>
       <div class="underline-title"></div>
       <div class="container">
-        <form class="form-inline justify-content-center " style="padding-top: 3%;">
+        <div class="form-inline justify-content-center " style="padding-top: 3%;">
 
           <div class="row justify-content-center" style="width: 100%;">
             <div class="col text-center">
@@ -20,15 +20,20 @@
             <div class="col">
               <div class="centered">
                 <strong>Nombre</strong><br>
-                <input type="email" class="form-content" aria-describedby="emailHelp" placeholder="Introduce tu nombre">
+                <input type="email" [attr.disabled]="disabledPI ? '': null"  #inputName class="form-content" aria-describedby="emailHelp" placeholder="Introduce tu nombre">
+                <fa-icon [icon]="closedLock" *ngIf="disabledPI"></fa-icon>
+                <fa-icon [icon]="openedLock" *ngIf="!disabledPI"></fa-icon>
                 <div class="form-border"></div>
+                
               </div>
             </div>
             <div class="col">
               <div class="centered">
                 <strong>Apellidos</strong><br>
-                <input type="email" class="form-content" aria-describedby="emailHelp"
+                <input type="email" [attr.disabled]="disabledPI ? '': null" #inputLastname class="form-content" aria-describedby="emailHelp"
                   placeholder="Introduce tus apellidos">
+                  <fa-icon [icon]="closedLock" *ngIf="disabledPI"></fa-icon>
+                  <fa-icon [icon]="openedLock" *ngIf="!disabledPI"></fa-icon>
                 <div class="form-border"></div>
               </div>
             </div>
@@ -40,20 +45,22 @@
               <div>
                 <div class="centered">
                   <strong>Contraseña</strong><br>
-                  <input type="password" class="form-content mr-sm-2" aria-describedby="emailHelp"
+                  <input type="password" [attr.disabled]="disabledPI ? '': null" #inputPassword class="form-content mr-sm-2" aria-describedby="emailHelp"
                     placeholder="*********" disabled>
-
+                    <fa-icon [icon]="closedLock" *ngIf="disabledPI"></fa-icon>
+                    <fa-icon [icon]="openedLock" *ngIf="!disabledPI"></fa-icon>
                   <div class="form-border"></div>
 
                 </div>
-                <button id="btn-pass" type="submit" class="btn btn-light"><strong>Cambiar
-                    contraseña</strong></button>
+                
               </div>
             </div>
             <div class="col">
               <div class="centered">
                 <strong>Edad</strong><br>
-                <input type="email" class="form-content" aria-describedby="emailHelp" placeholder="Introduce tu edad">
+                <input type="email" [attr.disabled]="disabledPI ? '': null" #inputAge class="form-content" aria-describedby="emailHelp" placeholder="Introduce tu edad">
+                  <fa-icon [icon]="closedLock" *ngIf="disabledPI"></fa-icon>
+                  <fa-icon [icon]="openedLock" *ngIf="!disabledPI"></fa-icon>
                 <div class="form-border"></div>
               </div>
             </div>
@@ -65,25 +72,33 @@
             <div class="col">
               <div class="centered">
                 <strong>Número de teléfono</strong><br>
-                <input type="email" class="form-content" aria-describedby="emailHelp"
+                <input type="email" [attr.disabled]="disabledPI ? '': null" #inputPhone class="form-content" aria-describedby="emailHelp"
                   placeholder="Teléfono de contacto">
+                  <fa-icon [icon]="closedLock" *ngIf="disabledPI"></fa-icon>
+                  <fa-icon [icon]="openedLock" *ngIf="!disabledPI"></fa-icon>
                 <div class="form-border"></div>
-
               </div>
             </div>
-
             <div class="col">
               <div class="centered">
-
                 <strong>Correo electrónico</strong><br>
-                <input type="email" class="form-content" aria-describedby="emailHelp"
+                <input type="email" [attr.disabled]="disabledPI ? '': null" #inputEmail class="form-content" aria-describedby="emailHelp"
                   placeholder="Introduce tu correo electrónico">
+                  <fa-icon [icon]="closedLock" *ngIf="disabledPI"></fa-icon>
+                  <fa-icon [icon]="openedLock" *ngIf="!disabledPI"></fa-icon>
                 <div class="form-border"></div>
-
               </div>
             </div>
           </div>
-        </form>
+
+          <div class="row mb-5">
+            <div class="col">
+              <button id="submit-btn" (click)="enablePersonalInputs()" *ngIf="disabledPI" class="btn btn-light" style="padding: 0px !important; "><strong>Cambiar
+                datos</strong></button>
+              <button id="submit-btn" (click)="disablePersonalInputs()" *ngIf="!disabledPI" class="btn btn-light" style="padding: 0px !important; "><strong>Guardar cambios</strong></button>
+            </div>
+          </div>
+        </div>
 
 
         <!--DIRECCIÓN DE ENVÍO-->
@@ -94,15 +109,17 @@
 
         <div class="underline-title"></div>
 
-        <form class="form-inline justify-content-center" style="padding: 3%;">
+        <div class="form-inline justify-content-center" style="padding: 3%;">
 
 
           <div class="row text-center" style="padding-top: 5%; width: 100%;">
             <div class="col">
               <div class="centered">
                 <strong>Localidad</strong><br>
-                <input type="email" class="form-content" aria-describedby="emailHelp"
+                <input type="text" [attr.disabled]="disabledE ? '': null" #inputLocalidad class="form-content" aria-describedby="emailHelp"
                   placeholder="Calle, avenida, camino...">
+                  <fa-icon [icon]="closedLock" *ngIf="disabledE"></fa-icon>
+                  <fa-icon [icon]="openedLock" *ngIf="!disabledE"></fa-icon>
                 <div class="form-border"></div>
               </div>
             </div>
@@ -110,8 +127,10 @@
             <div class="col">
               <div class="centered">
                 <strong>Nombre de la vía</strong><br>
-                <input type="email" class="form-content" aria-describedby="emailHelp"
+                <input type="text" [attr.disabled]="disabledE ? '': null" #inputCalle class="form-content" aria-describedby="emailHelp"
                   placeholder="Ej: Calle San Isidro">
+                  <fa-icon [icon]="closedLock" *ngIf="disabledE"></fa-icon>
+                  <fa-icon [icon]="openedLock" *ngIf="!disabledE"></fa-icon>
                 <div class="form-border"></div>
               </div>
             </div>
@@ -123,8 +142,10 @@
             <div class="col">
               <div class="centered">
                 <strong>Número de portal</strong><br>
-                <input type="text" class="form-content mr-sm-3" aria-describedby="emailHelp"
+                <input type="text" [attr.disabled]="disabledE ? '': null" #inputPortal class="form-content mr-sm-3" aria-describedby="emailHelp"
                   placeholder="Ej: Portal 12">
+                  <fa-icon [icon]="closedLock" *ngIf="disabledE"></fa-icon>
+                  <fa-icon [icon]="openedLock" *ngIf="!disabledE"></fa-icon>
                 <div class="form-border"></div>
               </div>
             </div>
@@ -132,7 +153,9 @@
             <div class="col">
               <div class="centered">
                 <strong>Número de escalera</strong><br>
-                <input type="email" class="form-content" aria-describedby="emailHelp" placeholder="Ej: Escalera 2">
+                <input type="text" [attr.disabled]="disabledE ? '': null" #inputEscalera class="form-content" aria-describedby="emailHelp" placeholder="Ej: Escalera 2">
+                  <fa-icon [icon]="closedLock" *ngIf="disabledE"></fa-icon>
+                  <fa-icon [icon]="openedLock" *ngIf="!disabledE"></fa-icon>
                 <div class="form-border"></div>
               </div>
             </div>
@@ -145,7 +168,9 @@
             <div class="col">
               <div class="centered">
                 <strong>Número de puerta</strong><br>
-                <input type="email" class="form-content" aria-describedby="emailHelp" placeholder="Ej: Puerta 7">
+                <input type="text" [attr.disabled]="disabledE ? '': null" #inputPuerta class="form-content" aria-describedby="emailHelp" placeholder="Ej: Puerta 7">
+                  <fa-icon [icon]="closedLock" *ngIf="disabledE"></fa-icon>
+                  <fa-icon [icon]="openedLock" *ngIf="!disabledE"></fa-icon>
                 <div class="form-border"></div>
               </div>
             </div>
@@ -153,15 +178,27 @@
             <div class="col">
               <div class="centered">
                 <strong>Código postal</strong><br>
-                <input type="email" class="form-content" aria-describedby="emailHelp" placeholder="Ej: 12100">
+                <input type="text" [attr.disabled]="disabledE ? '': null" #inputCP class="form-content" aria-describedby="emailHelp" placeholder="Ej: 12100">
+                  <fa-icon [icon]="closedLock" *ngIf="disabledE"></fa-icon>
+                  <fa-icon [icon]="openedLock" *ngIf="!disabledE"></fa-icon>
                 <div class="form-border"></div>
               </div>
             </div>
           </div>
 
+
+          <div class="row mb-5">
+            <div class="col">
+              <button id="submit-btn" (click)="enableSendInputs()" *ngIf="disabledE" class="btn btn-light" style="padding: 0px !important; "><strong>Cambiar
+                datos</strong></button>
+              <button id="submit-btn" (click)="disableSendInputs()" *ngIf="!disabledE" class="btn btn-light" style="padding: 0px !important; "><strong>Guardar cambios</strong></button>
+            </div>
+          </div>
+        
+
           <div class="underline-title2" style="width: 100%"></div>
 
-        </form>
+        </div>
 
 
 
@@ -169,15 +206,13 @@
         <h1 id="card-title-singin" class="pt-5"><strong>DATOS BANCARIOS</strong></h1>
         <div class="underline-title"></div>
 
-        <form class="form-inline mr-sm-3 text-center" style="padding: 3%">
-
-
+        <div class="form-inline justify-content-center" style="padding: 3%">
 
           <div class="row text-center" style="padding-top: 5%; width: 100%;">
             <div class="col">
               <div class="centered">
                 <strong>Titular de la tarjeta</strong><br>
-                <input type="email" class="form-content" aria-describedby="emailHelp"
+                <input type="text" [attr.disabled]="disabledDB ? '': null" #inputTitularTarjeta class="form-content" aria-describedby="emailHelp"
                   placeholder="Ej: Pancracio Albiol Campos">
                 <div class="form-border"></div>
               </div>
@@ -186,7 +221,7 @@
             <div class="col">
               <div class="centered">
                 <strong>Número de tarjeta</strong><br>
-                <input type="email" class="form-content" aria-describedby="emailHelp"
+                <input type="number" [attr.disabled]="disabledDB ? '': null" #inputNroTarjeta class="form-content" aria-describedby="emailHelp"
                   placeholder="Ej: 4586123514781595">
                 <div class="form-border"></div>
               </div>
@@ -199,7 +234,7 @@
               <div class="col">
                 <div class="centered">
                 <strong>CVV</strong><br>
-                <input type="email" class="form-content" aria-describedby="emailHelp" placeholder="Ej: 561">
+                <input type="number" [attr.disabled]="disabledDB ? '': null" #inputCVV class="form-content" aria-describedby="emailHelp" placeholder="Ej: 561">
                 <div class="form-border"></div>
               </div>
             </div>
@@ -207,13 +242,22 @@
             <div class="col">
               <div class="centered">
                 <strong>Validez hasta</strong><br>
-                <input type="email" class="form-content" aria-describedby="emailHelp" placeholder="Ej: 03/25">
+                <input type="date" [attr.disabled]="disabledDB ? '': null" #inputValidez class="form-content" aria-describedby="emailHelp" placeholder="Ej: 03/25">
                 <div class="form-border"></div>
               </div>
             </div>
 
           </div>
-        </form>
+
+          <div class="row mb-5">
+            <div class="col">
+              <button id="submit-btn" (click)="enableBankInputs()" *ngIf="disabledDB" class="btn btn-light" style="padding: 0px !important; "><strong>Cambiar
+                datos</strong></button>
+              <button id="submit-btn" (click)="disableBankInputs()" *ngIf="!disabledDB" class="btn btn-light" style="padding: 0px !important; "><strong>Guardar cambios</strong></button>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
     <app-footer></app-footer>

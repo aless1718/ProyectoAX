@@ -22,6 +22,7 @@ import { RegistroPagoComponent } from './components/registro-pago/registro-pago.
 import { ReactiveFormsModule } from "@angular/forms";
 import { AxpassComponent } from './components/axpass/axpass.component';
 import { SeguimientocorporalComponent } from './components/seguimientocorporal/seguimientocorporal.component';
+import { NgApexchartsModule } from "ng-apexcharts";
 
 
 
@@ -52,7 +53,8 @@ import { SeguimientocorporalComponent } from './components/seguimientocorporal/s
     FontAwesomeModule,
     HttpClientModule,
     MatDialogModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgApexchartsModule
   ],
 
   providers: [],

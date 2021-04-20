@@ -6,7 +6,7 @@ import { User } from '../Models/User';
 @Injectable({
   providedIn: 'root'
 })
-export class UsersService {
+export class RegisterUserService {
 
   public user: User;
 
@@ -19,7 +19,9 @@ export class UsersService {
 
   public createUser(): void
   {
+    
     console.log(this.user);
+    delete this.user._id;
     this.http.post( this.apiUrl, this.user ).subscribe( (newUser) => {
 
       console.log(newUser);
