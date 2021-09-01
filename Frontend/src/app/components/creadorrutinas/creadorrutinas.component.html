@@ -1,0 +1,167 @@
+<div style="padding-top: 7vh;">
+  <div class="containerr">
+
+    <h1 id="card-title-singin"><strong>CREADOR DE RUTINAS</strong></h1>
+    <div class="underline-title mb-2"></div>
+
+
+
+    <div class="row">
+
+
+
+      <div class="col mr-2">
+
+        <div class="row justify-content-center" id="aviso">
+          <span> *Añade los ejercicios en el orden que quieres que se muestren* </span>
+          <span> *Los vídeos no pueden superar los 10 segundos* </span>
+        </div>
+
+        <div class="row" id="videos">
+          <div class="col mt-2 mb-3">
+            <div class="row" id="video"></div>
+            <div class="row m-2 justify-content-center"><button id="videoBtn">
+                <fa-icon [icon]="anadir"></fa-icon>
+              </button>
+            </div>
+          </div>
+          <div class="col mt-2 mb-3">
+            <div class="row" id="video"></div>
+            <div class="row m-2 justify-content-center"><button id="videoBtn">
+                <fa-icon [icon]="anadir"></fa-icon>
+              </button>
+            </div>
+          </div>
+          <div class="col mt-2 mb-3">
+            <div class="row" id="video"></div>
+            <div class="row m-2 justify-content-center"><button id="videoBtn">
+                <fa-icon [icon]="anadir"></fa-icon>
+              </button>
+            </div>
+          </div>
+          <div class="col mt-2 mb-3">
+            <div class="row" id="video"></div>
+            <div class="row m-2 justify-content-center"><button id="videoBtn">
+                <fa-icon [icon]="anadir"></fa-icon>
+              </button>
+            </div>
+          </div>
+          <div class="col mt-2 mb-3">
+            <div class="row" id="video"></div>
+            <div class="row m-2 justify-content-center"><button id="videoBtn">
+                <fa-icon [icon]="anadir"></fa-icon>
+              </button>
+            </div>
+          </div>
+          <div class="col mt-2 mb-3">
+            <div class="row" id="video"></div>
+            <div class="row m-2 justify-content-center"><button id="videoBtn">
+                <fa-icon [icon]="anadir"></fa-icon>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+
+      </div>
+
+      <div class="col ml-2 pt-5" id="infoRutina">
+        <div id="barra">
+
+          <div class="row" id="info">
+            <div class="col align-top" id="text">
+              <span>Tipo de rutina: </span>
+
+              <mat-form-field >
+                <mat-select multiple #inputTipoRutina>
+                  <mat-option *ngFor="let rutina of rutina" [value]="rutina" >{{rutina}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div class="col align-top" id="text">
+              <span>Musculo(s): </span>
+
+              <mat-form-field >
+                <mat-select multiple #inputMusculos>
+                  <mat-option *ngFor="let musculo of musculos" [value]="musculo" >{{musculo}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+          </div>
+          <div class="row" id="info">
+            <div class="col" id="text">
+              <span>¿Material? </span>
+              <select name="material" id="" required #inputMaterial>
+                <option value=""></option>
+                <option value="si">Con material</option>
+                <option value="no">Sin material</option>
+                <option value="indiferente">Indiferente</option>
+
+              </select>
+            </div>
+
+            <div class="col" id="text">
+              <span>Duración: </span>
+              <input type="number" name="duration" required #inputDuracion>
+              <span style="color: black; font-size: 8px;"> minutos</span>
+            </div>
+          </div>
+
+          <div class="row" id="info">
+            <div class="col" id="text">
+              <span>Nivel: </span>
+              <mat-slider thumbLabel tickInterval="10" step="1" min="0" max="10"
+                aria-label="units" #inputNivel></mat-slider>
+            </div>
+
+              <div class="col mt-1" id="text">
+                <span>Número de ejercicios: </span>
+                <input type="number" name="numEjer" #inputNumejer>
+              </div>
+
+          </div>
+
+
+          <div class="row" id="info">
+            <div class="col mt-1" id="text">
+              <span>Series por ejercicio: </span>
+              <input type="number" name="series" #inputSeries>
+            </div>
+
+            <div class="col mt-1" id="text">
+              <span>Repeticiones por ejercicio: </span>
+              <input type="number" name="repes" #inputRepes>
+            </div>
+          </div>
+          
+          <div class="row text-center" id="info">
+            <div class="col mt-1" id="text">
+              <p>Descripción:</p>
+              <textarea id="descripcion" cols="30" rows="1" #inputDescripcion placeholder=" Escribe una breve descripción de la rutina además de qué cosas hay que tener en cuenta en ella..."></textarea>
+              
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="row text-center mt-5">
+      <div class="col">
+        <button id="submit-btn" (click)="saveRutinas()">Guardar rutina</button>
+      </div>
+    </div>
+
+    <div class="row justify-content-center m-3">
+      <div class="col text-center">
+        <div class="myAlert" *ngIf="this.saved">
+          ¡Registro guardado correctamente!
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  <app-footer></app-footer>

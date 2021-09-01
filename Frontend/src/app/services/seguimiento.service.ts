@@ -7,7 +7,7 @@ import { Register } from '../Models/Register';
 })
 export class SeguimientoService {
 
-  SERVER: string = 'http://192.168.1.143:3000';
+  SERVER: string = 'http://localhost:3000';
 
   public registers: Register[] = [];
 
@@ -18,14 +18,23 @@ export class SeguimientoService {
     return localStorage.getItem("ACCESS_TOKEN");
   }
 
-  public getRegisters(user_id: string): Promise<any> {
+  public getNumPages(user_id: string): Promise<any>{
+
+    const header = new HttpHeaders({
+      'Content-Type': `application/json`,
+      'Authorization': `Bearer ${this.getToken()}`
+    });
+    return this.httpClient.get<any>(`${this.SERVER}/registers/${user_id}/pags`, { headers: header }).toPromise();
+  }
+
+  public getRegisters(user_id: string, numPag: number): Promise<any> {
 
     const header = new HttpHeaders({
       'Content-Type': `application/json`,
       'Authorization': `Bearer ${this.getToken()}`
     });
 
-    return this.httpClient.get<any>(`${this.SERVER}/registers/` + user_id, { headers: header }).toPromise().then(
+    return this.httpClient.get<any>(`${this.SERVER}/registers/${user_id}/pags/${numPag}`, { headers: header }).toPromise().then(
       (res: any) => {
         if (res) {
           this.registers = res;

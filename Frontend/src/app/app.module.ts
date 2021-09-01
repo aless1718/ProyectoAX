@@ -19,10 +19,16 @@ import { SearchbarComponent } from './components/searchbar/searchbar.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { RegistroEnvioComponent } from './components/registro-envio/registro-envio.component';
 import { RegistroPagoComponent } from './components/registro-pago/registro-pago.component';
-import { ReactiveFormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AxpassComponent } from './components/axpass/axpass.component';
-import { SeguimientocorporalComponent } from './components/seguimientocorporal/seguimientocorporal.component';
 import { NgApexchartsModule } from "ng-apexcharts";
+import { CreadorrutinasComponent } from './components/creadorrutinas/creadorrutinas.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSliderModule} from '@angular/material/slider';
+import { SeguimientocorporalComponent } from './components/seguimiento-corporal/seguimiento-corporal.component';
+
 
 
 
@@ -44,7 +50,9 @@ import { NgApexchartsModule } from "ng-apexcharts";
     RegistroEnvioComponent,
     RegistroPagoComponent,
     AxpassComponent,
+    CreadorrutinasComponent,
     SeguimientocorporalComponent,
+
     
   ],
   imports: [
@@ -54,7 +62,13 @@ import { NgApexchartsModule } from "ng-apexcharts";
     HttpClientModule,
     MatDialogModule,
     ReactiveFormsModule,
-    NgApexchartsModule
+    NgApexchartsModule,
+    MatSelectModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatSliderModule
+
   ],
 
   providers: [],

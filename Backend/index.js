@@ -151,8 +151,19 @@ router.post('/auth', (req, res) => {
 
 
 
-//CREAR REGISTROS DEL SEGUIMEINTO CORPORAL
 
+
+//CREAR RUTINAS
+router.post('/creadorrutinas', authenticateJWT, (req, res) => {
+
+    Register.create(req.body).then((doc) => {
+        res.send(doc);
+    })
+})
+
+
+
+//CREAR REGISTROS DEL SEGUIMEINTO CORPORAL
 router.post('/registers', authenticateJWT, (req, res) => {
 
     Register.create(req.body).then((doc) => {
@@ -172,7 +183,7 @@ router.get('/registers/:user_id', authenticateJWT, (req, res) => {
         } else {
             res.send(doc);
         }
-    })
+    }) 
 });
 
 
@@ -193,8 +204,43 @@ router.delete('/registers/:_id', authenticateJWT, (req, res) => {
 
 
 
+router.get('/registers/:user_id/pags', authenticateJWT, (req, res) => {
 
+    Register.find({
+        user_id: req.params.user_id
+    }, (err, doc) => {
+        if (err) {
+            res.send(err);
+        } else {
+            let nroPagsTemp = doc.length/5;
+            let nroPags = nroPagsTemp % 1 == 0? nroPagsTemp : Math.floor(nroPagsTemp + 1);
 
+            res.send({nroPags});
+        }
+    })
+});
+
+router.get('/registers/:user_id/pags/:nroPag', authenticateJWT, (req, res) => {
+
+    let currentPage = req.params.nroPag;
+    let docsPerPage = 5;
+
+    Register.find({
+        user_id: req.params.user_id
+    })
+    .limit(docsPerPage)
+    .skip(docsPerPage * currentPage)
+    .sort({fecha: 'desc'})
+    .exec((err, doc) => {
+
+        if (err) {
+            res.send(err);
+        } else {
+            
+            res.send(doc);
+        }
+    })
+});
 
 
 

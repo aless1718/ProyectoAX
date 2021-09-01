@@ -4,6 +4,7 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { FormBuilder, Validators, Form, FormGroup } from '@angular/forms';
+import { SeguimientoService } from 'src/app/services/seguimiento.service';
 
 
 @Component({
@@ -21,7 +22,9 @@ export class NavbarComponent implements OnInit {
   public isLogged: boolean = false;
 
 
-  constructor(public authService: AuthService, private router: Router, private fb: FormBuilder) { }
+  constructor(public authService: AuthService, private router: Router, private fb: FormBuilder, public seguimiento: SeguimientoService) { 
+    this.seguimiento = seguimiento;
+  }
 
   faShopify = faShopify;
   faCarrito = faShoppingCart;
@@ -38,6 +41,8 @@ export class NavbarComponent implements OnInit {
 
   }
 
+
+  
 
   onLogin(): void {
 

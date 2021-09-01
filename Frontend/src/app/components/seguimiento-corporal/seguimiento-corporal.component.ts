@@ -1,6 +1,5 @@
-
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faArchive, faEdit, faTrashAlt  } from '@fortawesome/free-solid-svg-icons';
 import { Register } from 'src/app/Models/Register';
 import { AuthService } from 'src/app/services/auth.service';
 import { SeguimientoService } from 'src/app/services/seguimiento.service';
@@ -17,6 +16,7 @@ import {
   ApexTitleSubtitle,
   ApexLegend
 } from "ng-apexcharts";
+import { User } from 'src/app/Models/User';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -35,13 +35,17 @@ export type ChartOptions = {
 
 @Component({
   selector: 'app-seguimientocorporal',
-  templateUrl: './seguimientocorporal.component.html',
-  styleUrls: ['./seguimientocorporal.component.scss']
+  templateUrl: './seguimiento-corporal.component.html',
+  styleUrls: ['./seguimiento-corporal.component.scss']
 })
 export class SeguimientocorporalComponent implements OnInit {
 
   @ViewChild("chart") chart: any;
   public chartOptions: Partial<any>;
+
+  @ViewChild("chart2") chart2: any;
+  public chartOptions2: Partial<any>;
+
 
 
   @ViewChild("inputFecha") inputFecha: any;
@@ -53,6 +57,7 @@ export class SeguimientocorporalComponent implements OnInit {
   @ViewChild("inputHombros") inputHombros: any;
   @ViewChild("inputPierna") inputPierna: any;
 
+  public modalBorrar: boolean = false;
   public saved: boolean = false;
   public vistaAnadirRegistro: boolean = true;
   public vistaTodosRegistros: boolean = false;
@@ -61,24 +66,34 @@ export class SeguimientocorporalComponent implements OnInit {
   public nroPags: number = 0;
   public currentPage: number = 1;
 
+  public pesoGrafica: number[] = [];
+  public fechaGrafica: string[] = [];
+  public imcGrafica: number[] = [];
+
+  public brazoGrafica: number[] = [];
+  public torsoGrafica: number[] = [];
+  public piernaGrafica: number[] = [];
+  public hombrosGrafica: number[] = [];
+  public cinturaGrafica: number[] = [];
+
+
   iconoBasura = faTrashAlt;
+  iconoEdit = faEdit;
+  iconoRegistros = faArchive;
 
-
-  constructor(public seguimiento: SeguimientoService, private auth: AuthService) { 
+  constructor(public seguimiento: SeguimientoService, private auth: AuthService) {
     this.chartOptions = {
       series: [
         {
-          name: "Session Duration",
-          data: [45, 52, 38, 24, 33, 26, 21, 20, 6, 8, 15, 10]
+          name: "Peso",
+          data: this.pesoGrafica
         },
+
         {
-          name: "Page Views",
-          data: [35, 41, 62, 42, 13, 18, 29, 37, 36, 51, 32, 35]
-        },
-        {
-          name: "Total Visits",
-          data: [87, 57, 74, 99, 75, 38, 62, 47, 82, 56, 45, 47]
+          name: "IMC",
+          data: this.imcGrafica
         }
+
       ],
       chart: {
         height: 350,
@@ -89,11 +104,11 @@ export class SeguimientocorporalComponent implements OnInit {
       },
       stroke: {
         width: 5,
-        curve: "straight",
+        curve: "smooth",
         dashArray: [0, 8, 5]
       },
       title: {
-        text: "Page Statistics",
+        text: "Mis estadísticas",
         align: "left"
       },
       legend: {
@@ -113,47 +128,137 @@ export class SeguimientocorporalComponent implements OnInit {
         }
       },
       xaxis: {
-        labels: {
-          trim: false
-        },
-        categories: [
-          "01 Jan",
-          "02 Jan",
-          "03 Jan",
-          "04 Jan",
-          "05 Jan",
-          "06 Jan",
-          "07 Jan",
-          "08 Jan",
-          "09 Jan",
-          "10 Jan",
-          "11 Jan",
-          "12 Jan"
-        ]
+        type: "string",
+        categories: this.fechaGrafica
       },
       tooltip: {
         y: [
           {
             title: {
               formatter: function(val: any) {
-                return val + " (mins)";
+                return val + " (kgs):";
               }
             }
           },
           {
             title: {
               formatter: function(val: any) {
-                return val + " per session";
-              }
-            }
-          },
-          {
-            title: {
-              formatter: function(val: any) {
-                return val;
+                return val + ":";
               }
             }
           }
+
+        ]
+      },
+      grid: {
+        borderColor: "#f1f1f1"
+      }
+    };
+
+
+
+
+
+
+    this.chartOptions2 = {
+      series: [
+        {
+          name: "Brazo",
+          data: this.brazoGrafica
+        },
+        {
+          name: "Pierna",
+          data: this.pesoGrafica
+        },
+        {
+          name: "Hombros",
+          data: this.pesoGrafica
+        },
+        {
+          name: "Torso",
+          data: this.pesoGrafica
+        },
+        {
+          name: "Cintura",
+          data: this.imcGrafica
+        }
+
+      ],
+      chart: {
+        height: 350,
+        type: "line"
+      },
+      dataLabels: {
+        enabled: false
+      },
+      stroke: {
+        width: 5,
+        curve: "smooth",
+        dashArray: [0, 8, 5]
+      },
+      title: {
+        text: "Mis estadísticas",
+        align: "left"
+      },
+      legend: {
+        tooltipHoverFormatter: function(val: any, opts: any) {
+          return (
+            val +
+            " - <strong>" +
+            opts.w.globals.series[opts.seriesIndex][opts.dataPointIndex] +
+            "</strong>"
+          );
+        }
+      },
+      markers: {
+        size: 0,
+        hover: {
+          sizeOffset: 6
+        }
+      },
+      xaxis: {
+        type: "string",
+        categories: this.fechaGrafica
+      },
+      tooltip: {
+        y: [
+          {
+            title: {
+              formatter: function(val: any) {
+                return val + " (cms):";
+              }
+            }
+          },
+          {
+            title: {
+              formatter: function(val: any) {
+                return val + " (cms):";
+              }
+            }
+          },
+          {
+            title: {
+              formatter: function(val: any) {
+                return val + " (cms):";
+              }
+            }
+          },
+          {
+            title: {
+              formatter: function(val: any) {
+                return val + " (cms):";
+              }
+            }
+          },
+          {
+            title: {
+              formatter: function(val: any) {
+                return val + " (cms):";
+              }
+            }
+          },
+
+
         ]
       },
       grid: {
@@ -161,7 +266,7 @@ export class SeguimientocorporalComponent implements OnInit {
       }
     };
   }
-  
+
 
   ngOnInit(): void {
   }
@@ -201,38 +306,77 @@ export class SeguimientocorporalComponent implements OnInit {
   }
 
   public deleteRegister(_id: string | any){
+
+    let user = this.auth.getUser();
+
     this.seguimiento.deleteRegister(_id).then((res) => {
       console.log("Borrado");
       let index =  this.registros.findIndex((register) => register._id == _id)
       this.registros.splice(index, 1);
-      this.countPages();
+
+      this.seguimiento.getNumPages(user._id).then((res) => {
+      this.nroPags = res.nroPags;
+      if(this.registros.length == 0)
+      {
+      this.currentPage = 1;
+
+      this.getRegisters(user, this.currentPage - 1);
+      }
+    })
     });
+  }
+
+
+  public calculoIMC(peso: number, altura: number){
+
+    altura = altura/100;
+    altura = Math.pow(altura, 2);
+    let imc = peso/altura;
+
+    return Number.parseFloat(imc.toFixed(0));
   }
 
 
   public cambioVistaTodosRegistros() {
 
-    let user_id = this.auth.getUser()._id as string;
+    let user = this.auth.getUser();
 
     this.vistaAnadirRegistro = false;
     this.vistaTodosRegistros = true;
-    this.seguimiento.getRegisters(user_id).then((res) => {
 
-      this.registros = JSON.parse(JSON.stringify(res));
-      this.countPages();
-      this.registros.sort(function(a,b){return new Date(a.fecha).getTime() - new Date(b.fecha).getTime()});
 
-      console.log(this.registros);
+    this.seguimiento.getNumPages(user._id as string).then((res) => {
+      this.nroPags = res.nroPags;
 
-    });
 
+      this.getRegisters(user, 0);
+
+    })
   }
 
-  public countPages(){
 
-    let nroPagsTemp = this.registros.length/5;
-    this.nroPags = nroPagsTemp % 1 == 0? nroPagsTemp : Math.floor(nroPagsTemp + 1);
+  public getRegisters(user: User, nroPag: number){
+    this.seguimiento.getRegisters(user._id, nroPag).then((res) => {
 
+      this.registros = JSON.parse(JSON.stringify(res));
+      console.log(res);
+      this.registros.forEach((registro: Register) => {
+
+        this.pesoGrafica.push(registro.peso);
+        this.brazoGrafica.push(registro.brazo);
+        this.piernaGrafica.push(registro.pierna);
+        this.cinturaGrafica.push(registro.cintura);
+        this.hombrosGrafica.push(registro.hombros);
+        this.torsoGrafica.push(registro.torso);
+        this.imcGrafica.push(this.calculoIMC(registro.peso, Number.parseInt(user.height)));
+
+        let fechaNueva = new Date(registro.fecha);
+
+        this.fechaGrafica.push(`${fechaNueva.getUTCDate()}/${fechaNueva.getUTCMonth()}/${fechaNueva.getUTCFullYear()}`);
+
+      });
+
+    });
   }
 
 
@@ -285,18 +429,21 @@ export class SeguimientocorporalComponent implements OnInit {
   checkRegisterInPage(i : number){
     if(i < 5 && this.currentPage == 1){
       return true;
-    } 
+    }
 
     if(i >= (this.currentPage * 5) - 5 && i < this.currentPage * 5 && this.currentPage != 1){
       return true;
     }
     return false;
-    
+
   }
 
 
-  changePage(nroPags : number){
-    this.currentPage = nroPags;
+  changePage(nroPag : number){
+    let user = this.auth.getUser();
+
+    this.currentPage = nroPag;
+    this.getRegisters(user, (this.currentPage - 1));
 
   }
 }

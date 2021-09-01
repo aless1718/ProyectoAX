@@ -7,7 +7,8 @@ import { RegistroComponent } from './components/registro/registro.component';
 import { RegistroEnvioComponent } from './components/registro-envio/registro-envio.component';
 import { RegistroPagoComponent } from './components/registro-pago/registro-pago.component';
 import { AxpassComponent } from './components/axpass/axpass.component';
-import { SeguimientocorporalComponent } from './components/seguimientocorporal/seguimientocorporal.component';
+import { SeguimientocorporalComponent } from './components/seguimiento-corporal/seguimiento-corporal.component';
+import { CreadorrutinasComponent } from './components/creadorrutinas/creadorrutinas.component';
 
 const routes: Routes = [
                         {path: '', component: MainviewComponent},
@@ -17,7 +18,8 @@ const routes: Routes = [
                         {path: 'registro-envio', component: RegistroEnvioComponent},
                         {path: 'registro-pago', component: RegistroPagoComponent},
                         {path: 'axpass', component: AxpassComponent},
-                        {path: 'seguimientocorporal', component: SeguimientocorporalComponent},
+                        {path: 'creadorrutinas', component: CreadorrutinasComponent},
+                        {path: 'seguimiento-corporal', component: SeguimientocorporalComponent},
                         {path: '', redirectTo: '/auth', pathMatch: 'full'},
                         {path: 'auth', loadChildren: './auth/auth.module#AuthModule'}
                       ];
