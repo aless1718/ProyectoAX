@@ -1,0 +1,51 @@
+    <!-- MODAL DEL LOGIN -->
+    <div class="modal fade justify-content-center" id="myModal" tabindex="-1" role="dialog"
+      aria-labelledby="myModal" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <button #closeModal type="button" class="close" aria-label="Close" data-target="#myModal" data-toggle="modal"
+          [hidden]="true">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="modal-content">
+          <div id="card-singin">
+            <div id="card-content-singin">
+              <div id="card-title-singin">
+                <h5>INICIO DE SESIÓN</h5>
+                <div class="underline-title"></div>
+              </div>
+              <form class="form" [formGroup]="this.profileForm">
+                <label for="user-email" style="padding-top:13px">
+                  &nbsp;Email
+                </label>
+
+                <input id="user-email" formControlName="email" class="form-content" type="email" name="email"
+                  autocomplete="on" required />
+                <div class="form-border"></div>
+                <span class="text-danger" *ngIf="this.submitted && this.profileForm.get('email').errors?.required">Email
+                  no registrado</span>
+                <span class="text-danger"
+                  *ngIf="this.submitted && this.profileForm.get('email').errors?.email">sdfsdfsdfs</span>
+                <label for="user-password" style="padding-top:22px">&nbsp;Contraseña
+                </label>
+                <input id="user-password" class="form-content" formControlName="password" type="password"
+                  name="password" required />
+                <div class="form-border"></div>
+                <span class="text-danger"
+                  *ngIf="this.submitted && this.profileForm.get('password').errors?.required">Contraseña
+                  no válida</span>
+                <a href="#">
+                  <legend id="forgot-pass">¿Olvidaste la contraseña?</legend>
+                </a>
+                <span class="pt-3" style="color: rgba(255, 0, 0, 0.61);" *ngIf="logueoCorrecto == false">Error al
+                  introducir las
+                  credenciales de acceso</span>
+                <input id="submit-btn" (click)="onLogin()" type="submit" name="submit" value="ACCEDER" />
+                <a href="/registro" id="signup">¿No tienes una cuenta todavía?</a>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    

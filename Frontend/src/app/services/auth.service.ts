@@ -12,7 +12,7 @@ export class AuthService {
 
 
   public islogged: boolean = false;
-  AUTH_SERVER: string = 'http://localhost:3000';
+  AUTH_SERVER: string = 'http://192.168.1.172:3000';
   authSubject = new BehaviorSubject(false);
   private token: string | null = '';
 

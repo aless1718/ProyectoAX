@@ -244,36 +244,8 @@ router.get('/registers/:user_id/pags/:nroPag', authenticateJWT, (req, res) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*Le decimos a nuestra aplicación express que el objeto router va a formar parte de la aplicación con todos sus endpoints*/
 app.use(router);
-
-
 
 
 /*Creamos la conexión con la DB*/

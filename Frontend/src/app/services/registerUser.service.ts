@@ -10,7 +10,7 @@ export class RegisterUserService {
 
   public user: User;
 
-  private apiUrl: string = "http://192.168.1.143:3000/users";
+  private apiUrl: string = "http://192.168.1.172:3000/users";
 
   constructor( private http: HttpClient ) 
   {

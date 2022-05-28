@@ -21,20 +21,21 @@ import { RegistroEnvioComponent } from './components/registro-envio/registro-env
 import { RegistroPagoComponent } from './components/registro-pago/registro-pago.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AxpassComponent } from './components/axpass/axpass.component';
-import { NgApexchartsModule } from "ng-apexcharts";
 import { CreadorrutinasComponent } from './components/creadorrutinas/creadorrutinas.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSliderModule} from '@angular/material/slider';
 import { SeguimientocorporalComponent } from './components/seguimiento-corporal/seguimiento-corporal.component';
+import { LoginFormComponent } from './components/login-form/login-form.component';
+import { ChartsModule } from 'ng2-charts';
 
 
 
 
 @NgModule({
   declarations: [
-    
+
     AppComponent,
     MainviewComponent,
     NavbarComponent,
@@ -52,17 +53,19 @@ import { SeguimientocorporalComponent } from './components/seguimiento-corporal/
     AxpassComponent,
     CreadorrutinasComponent,
     SeguimientocorporalComponent,
+    LoginFormComponent,
 
     
   ],
   imports: [
+    
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
     HttpClientModule,
     MatDialogModule,
     ReactiveFormsModule,
-    NgApexchartsModule,
+    ChartsModule,
     MatSelectModule,
     FormsModule,
     BrowserAnimationsModule,

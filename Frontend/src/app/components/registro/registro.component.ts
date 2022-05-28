@@ -40,6 +40,8 @@ export class RegistroComponent implements OnInit {
 
     console.log(this.RegistroUserService.user);
     this.router.navigate(['registro-envio']);
+    this.RegistroUserService.createUser();
 
   }
+  
 }

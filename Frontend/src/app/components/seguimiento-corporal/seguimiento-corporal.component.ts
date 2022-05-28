@@ -1,36 +1,14 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { faArchive, faEdit, faTrashAlt  } from '@fortawesome/free-solid-svg-icons';
 import { Register } from 'src/app/Models/Register';
 import { AuthService } from 'src/app/services/auth.service';
 import { SeguimientoService } from 'src/app/services/seguimiento.service';
-import {
-  ChartComponent,
-  ApexAxisChartSeries,
-  ApexChart,
-  ApexXAxis,
-  ApexDataLabels,
-  ApexStroke,
-  ApexMarkers,
-  ApexYAxis,
-  ApexGrid,
-  ApexTitleSubtitle,
-  ApexLegend
-} from "ng-apexcharts";
-import { User } from 'src/app/Models/User';
 
-export type ChartOptions = {
-  series: ApexAxisChartSeries;
-  chart: ApexChart;
-  xaxis: ApexXAxis;
-  stroke: ApexStroke;
-  dataLabels: ApexDataLabels;
-  markers: ApexMarkers;
-  tooltip: any; // ApexTooltip;
-  yaxis: ApexYAxis;
-  grid: ApexGrid;
-  legend: ApexLegend;
-  title: ApexTitleSubtitle;
-};
+import { User } from 'src/app/Models/User';
+import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
+import { Color, Label } from 'ng2-charts';
+
+
 
 
 @Component({
@@ -40,13 +18,22 @@ export type ChartOptions = {
 })
 export class SeguimientocorporalComponent implements OnInit {
 
-  @ViewChild("chart") chart: any;
-  public chartOptions: Partial<any>;
 
-  @ViewChild("chart2") chart2: any;
-  public chartOptions2: Partial<any>;
+  public chartData: ChartDataSets[] = [ {
+      data: [], 
+      label: 'peso',
+      },
+    {
+      data: [],
+      label: 'pierna',
+    }
+  ];
 
-
+  public chartLabels: Label[] = [];
+  public chartOptions: ChartOptions = { responsive: true };
+  public chartColors: Color[] = [ { backgroundColor: 'rgba(255,0,0,0)' } ];
+  public chartLegend = true;
+  public chartType: ChartType = 'line';
 
   @ViewChild("inputFecha") inputFecha: any;
   @ViewChild("inputPeso") inputPeso: any;
@@ -81,191 +68,9 @@ export class SeguimientocorporalComponent implements OnInit {
   iconoEdit = faEdit;
   iconoRegistros = faArchive;
 
-  constructor(public seguimiento: SeguimientoService, private auth: AuthService) {
-    this.chartOptions = {
-      series: [
-        {
-          name: "Peso",
-          data: this.pesoGrafica
-        },
-
-        {
-          name: "IMC",
-          data: this.imcGrafica
-        }
-
-      ],
-      chart: {
-        height: 350,
-        type: "line"
-      },
-      dataLabels: {
-        enabled: false
-      },
-      stroke: {
-        width: 5,
-        curve: "smooth",
-        dashArray: [0, 8, 5]
-      },
-      title: {
-        text: "Mis estadísticas",
-        align: "left"
-      },
-      legend: {
-        tooltipHoverFormatter: function(val: any, opts: any) {
-          return (
-            val +
-            " - <strong>" +
-            opts.w.globals.series[opts.seriesIndex][opts.dataPointIndex] +
-            "</strong>"
-          );
-        }
-      },
-      markers: {
-        size: 0,
-        hover: {
-          sizeOffset: 6
-        }
-      },
-      xaxis: {
-        type: "string",
-        categories: this.fechaGrafica
-      },
-      tooltip: {
-        y: [
-          {
-            title: {
-              formatter: function(val: any) {
-                return val + " (kgs):";
-              }
-            }
-          },
-          {
-            title: {
-              formatter: function(val: any) {
-                return val + ":";
-              }
-            }
-          }
-
-        ]
-      },
-      grid: {
-        borderColor: "#f1f1f1"
-      }
-    };
-
-
-
-
-
-
-    this.chartOptions2 = {
-      series: [
-        {
-          name: "Brazo",
-          data: this.brazoGrafica
-        },
-        {
-          name: "Pierna",
-          data: this.pesoGrafica
-        },
-        {
-          name: "Hombros",
-          data: this.pesoGrafica
-        },
-        {
-          name: "Torso",
-          data: this.pesoGrafica
-        },
-        {
-          name: "Cintura",
-          data: this.imcGrafica
-        }
-
-      ],
-      chart: {
-        height: 350,
-        type: "line"
-      },
-      dataLabels: {
-        enabled: false
-      },
-      stroke: {
-        width: 5,
-        curve: "smooth",
-        dashArray: [0, 8, 5]
-      },
-      title: {
-        text: "Mis estadísticas",
-        align: "left"
-      },
-      legend: {
-        tooltipHoverFormatter: function(val: any, opts: any) {
-          return (
-            val +
-            " - <strong>" +
-            opts.w.globals.series[opts.seriesIndex][opts.dataPointIndex] +
-            "</strong>"
-          );
-        }
-      },
-      markers: {
-        size: 0,
-        hover: {
-          sizeOffset: 6
-        }
-      },
-      xaxis: {
-        type: "string",
-        categories: this.fechaGrafica
-      },
-      tooltip: {
-        y: [
-          {
-            title: {
-              formatter: function(val: any) {
-                return val + " (cms):";
-              }
-            }
-          },
-          {
-            title: {
-              formatter: function(val: any) {
-                return val + " (cms):";
-              }
-            }
-          },
-          {
-            title: {
-              formatter: function(val: any) {
-                return val + " (cms):";
-              }
-            }
-          },
-          {
-            title: {
-              formatter: function(val: any) {
-                return val + " (cms):";
-              }
-            }
-          },
-          {
-            title: {
-              formatter: function(val: any) {
-                return val + " (cms):";
-              }
-            }
-          },
-
-
-        ]
-      },
-      grid: {
-        borderColor: "#f1f1f1"
-      }
-    };
+  constructor(public seguimiento: SeguimientoService, public auth: AuthService) {
   }
+
 
 
   ngOnInit(): void {
@@ -374,6 +179,12 @@ export class SeguimientocorporalComponent implements OnInit {
 
         this.fechaGrafica.push(`${fechaNueva.getUTCDate()}/${fechaNueva.getUTCMonth()}/${fechaNueva.getUTCFullYear()}`);
 
+
+        this.chartData[0].data.push(registro.peso);
+        this.chartData[1].data.push(registro.pierna);
+
+        this.chartLabels.push(this.parseChartDate(registro.fecha));
+
       });
 
     });
@@ -385,6 +196,11 @@ export class SeguimientocorporalComponent implements OnInit {
     this.vistaTodosRegistros = false;
   }
 
+  public parseChartDate(fecha: Date){
+    let fechaChart = new Date(fecha);
+    return `${fechaChart.getUTCDay()}/${fechaChart.getUTCMonth()}/${fechaChart.getFullYear()}`;
+
+  }
 
   public parseDate(fechaVieja: Date) {
     let fechaNueva = new Date(fechaVieja);

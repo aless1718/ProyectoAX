@@ -1,34 +1,26 @@
-import { Component, OnInit, Inject, ViewChild, ElementRef } from '@angular/core';
-import { faShopify } from '@fortawesome/free-brands-svg-icons';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
-import { FormBuilder, Validators, Form, FormGroup } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
 import { SeguimientoService } from 'src/app/services/seguimiento.service';
-import { Register } from 'src/app/Models/Register';
-
 
 @Component({
-  selector: 'navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  selector: 'app-login-form',
+  templateUrl: './login-form.component.html',
+  styleUrls: ['./login-form.component.scss']
 })
-export class NavbarComponent implements OnInit {
+export class LoginFormComponent implements OnInit {
+
+  constructor(public authService: AuthService, private router: Router, private fb: FormBuilder, public seguimiento: SeguimientoService) { 
+    this.seguimiento = seguimiento;
+  }
 
   @ViewChild('closeModal') closeModal: any;
 
-  public showCuadroCarrito: boolean = false;
+  
   public logueoCorrecto: boolean = true;
   public modal: boolean = true;
   public isLogged: boolean = false;
-
-
-  constructor(public register: Register, public authService: AuthService, private router: Router, private fb: FormBuilder, public seguimiento: SeguimientoService) { 
-    
-  }
-
-  faShopify = faShopify;
-  faCarrito = faShoppingCart;
 
   public profileForm: any;
   public submitted: boolean = false;
@@ -41,9 +33,6 @@ export class NavbarComponent implements OnInit {
     });
 
   }
-
-
-  
 
   onLogin(): void {
 
@@ -63,6 +52,4 @@ export class NavbarComponent implements OnInit {
     }
   }
 
-
-  
 }

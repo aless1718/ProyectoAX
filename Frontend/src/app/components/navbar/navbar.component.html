@@ -1,4 +1,4 @@
-<div class="menu">
+
   <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top pl-4" style="box-shadow: 2px 2px 10px #24c64f">
     <a href="/"><img src="../../../assets/Icons/LogoAX.png"></a>
 
@@ -10,7 +10,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
 
-        <li class="nav-item dropdown">
+        <!-- <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Tienda
@@ -40,8 +40,7 @@
               </div>
             </div>
           </div>
-        </li>
-
+        </li> -->
 
 
         <li class="nav-item" align-content="right">
@@ -50,82 +49,43 @@
           </a>
         </li>
 
-        
-      
+        <!--<li class="nav-item dropdown" align-content="right" *ngIf="this.authService.islogged">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Registros
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/seguimiento-corporal">Seguimiento corporal</a>
+            <a class="dropdown-item" href="#">Registro de rutas</a>
+          </div>
+        </li>-->
 
-        
       </ul>
-      <login></login>
+      <!-- <login></login> -->
     </div>
 
   </nav>
 
-  <div class="modal" id="modalBasura" tabindex="-1" role="dialog" aria-labelledby="modalBasura" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">ELIMINAR REGISTRO</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <!-- <div id="iconoBorrar" (click)="seguimiento.deleteRegister(registro._id)"> -->
 
-         
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary"><a href="../seguimientocorporal/seguimientocorporal.component.html#borrarRegistro">hedfhjd</a></button>
-        </div>
+  
+
+
+
+<!-- <div class="modal" id="modalBasura" tabindex="-1" role="dialog" aria-labelledby="modalBasura" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">ELIMINAR REGISTRO</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <button style="width: 50px; height: 40px;" id="iconoBorrar" (click)="seguimiento.deleteRegister(register._id)"></button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
-
-
-
-
-
-                                          <!-- MODAL DEL LOGIN-->
-  <div class="modal fade justify-content-center" *ngIf="modal == true" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
-    <div class="modal-dialog">
-      <button #closeModal type="button" class="close" aria-label="Close" data-target="#myModal" data-toggle="modal" [hidden]="true">
-        <span aria-hidden="true">&times;</span>
-    </button>
-        <div class="modal-content">
-        <div id="card-singin">
-          <div id="card-content-singin">
-            <div id="card-title-singin">
-              <h5>INICIO DE SESIÓN</h5>
-              <div class="underline-title"></div>
-            </div>
-            <form class="form" [formGroup]="this.profileForm" >
-              <label for="user-email" style="padding-top:13px">
-                  &nbsp;Email
-                </label>
-                
-              <input id="user-email" formControlName="email" class="form-content" type="email" name="email" autocomplete="on" required />
-              <div class="form-border"></div>
-                <span class="text-danger" *ngIf="this.submitted && this.profileForm.get('email').errors?.required">Email no registrado</span>
-                <span class="text-danger" *ngIf="this.submitted && this.profileForm.get('email').errors?.email">sdfsdfsdfs</span>
-              <label for="user-password" style="padding-top:22px">&nbsp;Contraseña
-                </label>
-              <input id="user-password" class="form-content" formControlName="password" type="password" name="password" required />
-              <div class="form-border"></div>
-              <span class="text-danger" *ngIf="this.submitted && this.profileForm.get('password').errors?.required">Contraseña no válida</span>
-              <a href="#">
-                <legend id="forgot-pass">¿Olvidaste la contraseña?</legend>
-              </a>
-              <span class="pt-3" style="color: rgba(255, 0, 0, 0.61);" *ngIf="logueoCorrecto == false">Error al introducir las credenciales de acceso</span>
-              <input id="submit-btn" (click)="onLogin()" type="submit" name="submit" value="ACCEDER" />
-              <a href="/registro" id="signup">¿No tienes una cuenta todavía?</a>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-                          
-  
-  
- 
-</div>
+</div> -->
